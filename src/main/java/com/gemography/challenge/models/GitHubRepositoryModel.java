@@ -2,7 +2,9 @@ package com.gemography.challenge.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+ * @author Baxter
+*/
 public class GitHubRepositoryModel implements Serializable {
 
 	public int total_count;
@@ -23,28 +25,7 @@ public class GitHubRepositoryModel implements Serializable {
 		this.items = items;
 	}
 
-	public int getTotal_count() {
-		return total_count;
-	}
-
-	public void setTotal_count(int total_count) {
-		this.total_count = total_count;
-	}
-
-	public boolean isIncomplete_results() {
-		return incomplete_results;
-	}
-
-	public void setIncomplete_results(boolean incomplete_results) {
-		this.incomplete_results = incomplete_results;
-	}
-
 	public ArrayList<ItemModel> getItems() {
 		return items;
 	}
-
-	public void setItems(ArrayList<ItemModel> items) {
-		this.items = items;
-	}
-	
 }
