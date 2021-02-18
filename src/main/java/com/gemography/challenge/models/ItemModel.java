@@ -1,7 +1,9 @@
 package com.gemography.challenge.models;
 
 import java.io.Serializable;
-
+/**
+ * @author Baxter
+*/
 public class ItemModel implements Serializable {
 	public String name;
 	public int stargazers_count;

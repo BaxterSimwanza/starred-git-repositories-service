@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.gemography.challenge.interfaces.RequestServiceI;
+import com.gemography.challenge.interfaces.ResponseServiceI;
 import com.gemography.challenge.models.GitHubRepositoryModel;
 import com.gemography.challenge.models.LanguagesResponseModel;
-import com.gemography.challenge.services.RequestService;
-import com.gemography.challenge.services.ResponseService;
+
+/**
+ * @author Baxter
+*/
 
 @RestController
 @RequestMapping("/top-github")
@@ -25,14 +29,22 @@ public class GithubAPIController {
 	private RestTemplate restTemplate;
 	
 	@Autowired
-	private RequestService requestService;
+	private RequestServiceI requestService;
 
 	@Autowired
-	private ResponseService responseService;
+	private ResponseServiceI responseService;
 	
 	@Value("${GitHub-Repositories-API}")
 	private String gitHubReposApi;
-	
+
+	/**
+	 * The getLanguages function is a REST end point with a GET request method
+	 * 
+	 * @param repositories : This is an integer which represents the total number of top repositories within the last 30 days which we would like to process
+	 * 						 By default the GitHub API returns 30 hits, but with this we can choose as many repositories as we like. If the value < 0 then it returns the top 100 by default
+	 * @return languagesResponseItems : This is requested and restructured collection of data returned to the client
+	*/
+
 	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET)
 	public Collection<LanguagesResponseModel> getLanguages(@PathVariable(value = "repositories") Integer repositories) {
 

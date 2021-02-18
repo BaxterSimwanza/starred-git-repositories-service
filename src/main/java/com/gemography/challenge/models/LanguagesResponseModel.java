@@ -1,7 +1,9 @@
 package com.gemography.challenge.models;
 
 import java.util.ArrayList;
-
+/**
+ * @author Baxter
+*/
 public class LanguagesResponseModel {
 
 	public String languageName;
