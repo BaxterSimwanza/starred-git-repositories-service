@@ -43,4 +43,8 @@ public class LanguagesResponseModel {
 	public void setLanguageUsers(ArrayList<String> languageUsers) {
 		this.languageUsers = languageUsers;
 	}
+	
+	public void addNameToLanguageUsers(String languageUser) {
+	    this.languageUsers.add(languageUser);
+	}
 }
