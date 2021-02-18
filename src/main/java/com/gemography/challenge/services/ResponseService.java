@@ -20,10 +20,11 @@ public class ResponseService {
 
 			LanguagesResponseModel currentResponseItem = allResponseItems.get(item.getLanguage());
 
-			if (currentResponseItem == null) {	
-				currentResponseItem = new LanguagesResponseModel(item.getLanguage(), 1);
+			if (currentResponseItem == null) {
+				
+				currentResponseItem = new LanguagesResponseModel(item.getLanguage());
 			} else {
-				currentResponseItem.setNumberOfUsers(currentResponseItem.getNumberOfUsers() + 1);
+				currentResponseItem.incrementNumberOfUsers();
 			}
 
 			currentResponseItem.addNameToLanguageUsers(item.getName());

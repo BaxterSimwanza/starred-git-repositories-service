@@ -1,6 +1,5 @@
 package com.gemography.challenge.controllers;
 
-import java.time.LocalDate;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,13 @@ public class GithubAPIController {
 	
 	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET)
 	public Collection<LanguagesResponseModel> getLanguages(@PathVariable(value = "repositories") Integer repositories) {
+
 		String url = requestService.customizeUrl(gitHubReposApi, repositories);
 
 		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(url, GitHubRepositoryModel.class);
-		
-		return responseService.formatResponseItems(gitHubRepositories.getItems());
+
+		Collection<LanguagesResponseModel> languagesResponseItems = responseService.formatResponseItems(gitHubRepositories.getItems());
+
+		return languagesResponseItems;
 	}
 }

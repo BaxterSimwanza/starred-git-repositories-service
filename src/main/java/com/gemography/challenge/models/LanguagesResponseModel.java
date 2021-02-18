@@ -13,38 +13,18 @@ public class LanguagesResponseModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LanguagesResponseModel(String languageName, int numberOfUsers) {
+	public LanguagesResponseModel(String languageName) {
 		super();
 		this.languageName = languageName;
-		this.numberOfUsers = numberOfUsers;
+		this.numberOfUsers = 1;
 		this.languageUsers = new ArrayList<String>();
-	}
-
-	public String getLanguageName() {
-		return languageName;
-	}
-
-	public void setLanguageName(String languageName) {
-		this.languageName = languageName;
-	}
-
-	public int getNumberOfUsers() {
-		return numberOfUsers;
-	}
-
-	public void setNumberOfUsers(int numberOfUsers) {
-		this.numberOfUsers = numberOfUsers;
-	}
-
-	public ArrayList<String> getLanguageUsers() {
-		return languageUsers;
-	}
-
-	public void setLanguageUsers(ArrayList<String> languageUsers) {
-		this.languageUsers = languageUsers;
 	}
 	
 	public void addNameToLanguageUsers(String languageUser) {
 	    this.languageUsers.add(languageUser);
+	}
+	
+	public void incrementNumberOfUsers() {
+		numberOfUsers += 1;
 	}
 }
