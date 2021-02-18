@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.gemography.challenge.models.GitHubRepositoryModel;
+
 @RestController
 @RequestMapping("/top-github")
 @CrossOrigin
@@ -20,12 +22,15 @@ public class GithubAPIController {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Value("${GitHub-Repositories-API}")
+	private String gitHubReposApi;
 
 	@GetMapping("/languages")
-	public GitRepositoryModel getLanguages() {
+	public GitHubRepositoryModel getLanguages() {
 
-		GitRepositoryModel gitRepositories = restTemplate.getForObject("https://api.github.com/search/repositories?q=created:>{date}&sort=stars&order=desc", GitRepositoryModel.class);
+		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(gitHubReposApi, GitHubRepositoryModel.class);
 		
-		return gitRepositories.getItems();
+		return gitHubRepositories;
 	}
 }
