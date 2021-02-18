@@ -29,7 +29,7 @@ public class GithubAPIController {
 	@GetMapping("/languages")
 	public GitHubRepositoryModel getLanguages() {
 
-		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(gitHubReposApi, GitHubRepositoryModel.class);
+		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(gitHubReposApi.replace("{date}", "2021-01-18"), GitHubRepositoryModel.class);
 		
 		return gitHubRepositories;
 	}
