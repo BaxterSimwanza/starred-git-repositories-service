@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.gemography.challenge.models.GitHubRepositoryModel;
 import com.gemography.challenge.models.LanguagesResponseModel;
+import com.gemography.challenge.services.RequestService;
 import com.gemography.challenge.services.ResponseService;
 
 @RestController
@@ -25,28 +26,17 @@ public class GithubAPIController {
 	private RestTemplate restTemplate;
 	
 	@Autowired
+	private RequestService requestService;
+
+	@Autowired
 	private ResponseService responseService;
 	
 	@Value("${GitHub-Repositories-API}")
 	private String gitHubReposApi;
 	
-	public String customizeUrl(String url, Integer repositories) {
-		LocalDate date = LocalDate.now().minusDays(30);
-
-		String finalUrl = url.replace("{date}", date.toString());
-
-		if (repositories > 0) {
-			finalUrl = finalUrl.concat("&per_page="+repositories);
-		} else {
-			finalUrl = finalUrl.concat("&per_page="+100);
-		}
-
-		return finalUrl;
-	}
-	
 	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET)
 	public Collection<LanguagesResponseModel> getLanguages(@PathVariable(value = "repositories") Integer repositories) {
-		String url = customizeUrl(gitHubReposApi, repositories);
+		String url = requestService.customizeUrl(gitHubReposApi, repositories);
 
 		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(url, GitHubRepositoryModel.class);
 		
