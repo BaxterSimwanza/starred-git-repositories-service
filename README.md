@@ -50,5 +50,6 @@ The application is a micro-service and has no front-end, this means that it retu
 
 ## Conclusion
 The application should work perfectly if you follow the instructions and have an internet connection. Improvements can always be made, the following are a list of features not yet added to the application
+* Customized Exception handling
 * Spring security
 * Customizable time interval, 30 days is the default setting

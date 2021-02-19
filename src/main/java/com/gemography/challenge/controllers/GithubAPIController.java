@@ -46,9 +46,8 @@ public class GithubAPIController {
 	 * @return languagesResponseItems : This is requested and restructured collection of data returned to the client
 	*/
 
-	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET)
+	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET, produces = "application/json")
 	public Collection<LanguagesResponseModel> getLanguages(@PathVariable(value = "repositories") Integer repositories) {
-
 		String url = requestService.customizeUrl(gitHubReposApi, repositories);
 
 		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(url, GitHubRepositoryModel.class);
@@ -56,10 +55,5 @@ public class GithubAPIController {
 		Collection<LanguagesResponseModel> languagesResponseItems = responseService.formatResponseItems(gitHubRepositories.getItems());
 
 		return languagesResponseItems;
-	}
-	
-	@RequestMapping("/")
-	public String getLanguages() {
-		return "";
 	}
 }
