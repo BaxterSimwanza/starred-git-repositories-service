@@ -18,6 +18,7 @@ import com.gemography.challenge.models.LanguagesResponseModel;
 
 /**
  * @author Baxter
+ * GO TO: http://localhost:{PORT}/top-github/languages/repositories=75. THE PORT IS 9090 IF RUN WITH DOCKER-COMPOSE AND 8080 IN OTHER CASES
 */
 
 @RestController
@@ -55,5 +56,10 @@ public class GithubAPIController {
 		Collection<LanguagesResponseModel> languagesResponseItems = responseService.formatResponseItems(gitHubRepositories.getItems());
 
 		return languagesResponseItems;
+	}
+	
+	@RequestMapping("/")
+	public String getLanguages() {
+		return "";
 	}
 }

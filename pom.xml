@@ -36,6 +36,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>starred-git-repositories-service</finalName>
 	</build>
 
 </project>

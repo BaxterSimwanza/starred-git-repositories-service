@@ -1,0 +1,6 @@
+version: '3'
+services:
+  starred-git-repositories-service:
+    build: .
+    ports:
+    - "9090:8080"
