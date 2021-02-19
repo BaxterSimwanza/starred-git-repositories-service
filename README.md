@@ -12,9 +12,11 @@ Starred GitHub Repositories Service is a Spring Boot web applictation which cons
 ## Getting Started
 There are two recommended ways to run this project: With Docker or as a Spring Boot App in your Java IDE. But first, clone the GitHub repository.
 ### Method 1: Docker
-* Install Docker on your computer. If you are on linux, make sure to install docker-compose aswell.
-* First run Docker, and in your terminal go to the root folder of the application.
-To build the application for the first time simply run this command
+First of all, open an IDE like Eclipse or Spring Tool Suite in order to build the java application.
+* Open the IDE and import the project as a Maven project.
+* After the dependancies are successfully downloaded, right click on the project, go to **Run As > Maven Install** . This will compile and build the necessary files of the project to be used in by Docker. **PLEASE NOTE: The standard JRE cannot build projects, so change the compiler to JDK if it is JRE in the preferences**. This step is critical!
+Next, Install Docker on your computer. If you are on linux, make sure to install docker-compose aswell. Run Docker, and open the root folder of the application in your terminal.
+To build the Docker image and run the container simply execute this command
 ```
 docker-compose up --build
 ```
