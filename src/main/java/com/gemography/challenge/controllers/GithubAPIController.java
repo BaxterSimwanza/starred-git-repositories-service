@@ -18,6 +18,7 @@ import com.gemography.challenge.models.LanguagesResponseModel;
 
 /**
  * @author Baxter
+ * GO TO: http://localhost:{PORT}/top-github/languages/repositories=75. THE PORT IS 9090 IF RUN WITH DOCKER-COMPOSE AND 8080 IN OTHER CASES
 */
 
 @RestController
@@ -45,9 +46,8 @@ public class GithubAPIController {
 	 * @return languagesResponseItems : This is requested and restructured collection of data returned to the client
 	*/
 
-	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET)
+	@RequestMapping(value= {"/languages/repositories={repositories}"}, method = RequestMethod.GET, produces = "application/json")
 	public Collection<LanguagesResponseModel> getLanguages(@PathVariable(value = "repositories") Integer repositories) {
-
 		String url = requestService.customizeUrl(gitHubReposApi, repositories);
 
 		GitHubRepositoryModel gitHubRepositories = restTemplate.getForObject(url, GitHubRepositoryModel.class);
